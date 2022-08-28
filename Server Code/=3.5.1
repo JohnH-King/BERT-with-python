@@ -1,0 +1,23 @@
+Collecting transformers
+  Downloading transformers-4.21.1-py3-none-any.whl (4.7 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.7/4.7 MB 67.9 MB/s eta 0:00:00
+Collecting packaging>=20.0
+  Downloading packaging-21.3-py3-none-any.whl (40 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 40.8/40.8 kB 231.7 MB/s eta 0:00:00
+Collecting tokenizers!=0.11.3,<0.13,>=0.11.1
+  Downloading tokenizers-0.12.1-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (6.6 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.6/6.6 MB 222.8 MB/s eta 0:00:00
+Requirement already satisfied: tqdm>=4.27 in ./.local/lib/python3.10/site-packages (from transformers) (4.64.0)
+Requirement already satisfied: pyyaml>=5.1 in /usr/lib/python3/dist-packages (from transformers) (5.4.1)
+Requirement already satisfied: numpy>=1.17 in ./.local/lib/python3.10/site-packages (from transformers) (1.23.2)
+Collecting huggingface-hub<1.0,>=0.1.0
+  Downloading huggingface_hub-0.8.1-py3-none-any.whl (101 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 101.5/101.5 kB 278.9 MB/s eta 0:00:00
+Requirement already satisfied: requests in /usr/lib/python3/dist-packages (from transformers) (2.25.1)
+Collecting filelock
+  Downloading filelock-3.8.0-py3-none-any.whl (10 kB)
+Requirement already satisfied: regex!=2019.12.17 in ./.local/lib/python3.10/site-packages (from transformers) (2022.8.17)
+Requirement already satisfied: typing-extensions>=3.7.4.3 in ./.local/lib/python3.10/site-packages (from huggingface-hub<1.0,>=0.1.0->transformers) (4.3.0)
+Requirement already satisfied: pyparsing!=3.0.5,>=2.0.2 in /usr/lib/python3/dist-packages (from packaging>=20.0->transformers) (2.4.7)
+Installing collected packages: tokenizers, packaging, filelock, huggingface-hub, transformers
+Successfully installed filelock-3.8.0 huggingface-hub-0.8.1 packaging-21.3 tokenizers-0.12.1 transformers-4.21.1
