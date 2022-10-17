@@ -1,24 +1,100 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<!-- <link rel="stylesheet" href="css/template.css" /> -->
-  <head>
-    <meta charset="utf-8">
-    <title>About Flask</title>
-  </head>
-  <body>
-    <h1>Understanding the sentiment</h1>
-    <p> How was the movie for you?</p>
-   
+<head>
+  <meta charset="utf-8">
+  <!-- <link rel="stylesheet" href="css/template.css" /> -->
 
-    <form action="http://localhost:5000/get_sentiment" method="post" id="default" target="_blank" >
-      Review: <input type="text" name="Review" id="Review" for="Review">
-      <br><br>
-      <button formaction="http://localhost:5000/get_sentiment" type="submit">Send Sentiment</button>
-      <button class="" type="reset" name="button"><b>Reset</b></button><br>
-      <!-- Upload resume: <input type="file" name="" value="" accept="pdf"> -->
-    </form>
-<p name="output" id="output"></p>
+  <style>
+  h1{
+  	font-weight: bold;
+    color: black;
+  	font-size: 5vh;
+    justify-content: center;
+    align-items: center;
 
+  }
+  .main{
+  	background-color: lightblue;
+  	font-family: 'Open Sans', sans-serif;
+  	display: flex;
+  	width: 100%;
+  	margin-left: 20%;
+  	margin-right: 20%;
+    padding-left: 10px;
+  	/* font-size: 1vh; */
+  	overflow-y: auto;
+  	overflow-x: hidden;
+  	flex-direction: column;
+  	justify-content: center;
+  	align-items: center;
+    border: 1px solid black;
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+  }
+  button {
+    border: 2px solid orange;
+    color: black;
+    padding: 10px 20px;
+  }
+  button:hover {
+    background-color: gray;
+    color: black;
+  }
+  p {
+    padding: 10px;
+    margin: 10px;
+    color: black;
+  }
+  body {
+    margin: auto;
+    font-family: Courier New,Arial,Optima;
+    background-color: grey;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.flex-container {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Test Sentiment Model</title>
+</head>
+<body class="flex-container">
+      <h1>BERT API</h1>
+        <div class="main">
+          <p> How was the movie for you?</p>
+          <form action="http://localhost:5000/get_sentiment" method="post" id="default" target="_blank" >
+            <p>Review: <input type="text" name="Review" id="Review" for="Review"></p>
+
+            <button formaction="http://localhost:5000/get_sentiment" type="submit">Submit Review</button>
+            <button class="" type="reset" name="button">Reset</button><br>
+            <!-- Upload resume: <input type="file" name="" value="" accept="pdf"> -->
+          </form>
+          <p name="output" id="output"></p>
+          <p name="output2" id="output2"></p>
+        </div>
  <script>
   //Get the form element by id
 const sampleForm = document.getElementById("default");
@@ -57,13 +133,25 @@ sampleForm.addEventListener("submit", async (e) => {
     let { serverDataResponse } = responseData;
 
     //Display the response data in the console (for debugging)
-    console.log(serverDataResponse);
-
-    document.getElementById("output").innerHTML = JSON.stringify(responseData);
+    console.log(responseData);
+    var json_to_html = document.getElementById("output")
+    let data = JSON.stringify(responseData);
+    let parsedData = JSON.parse(data);
+    // json_to_html.innerHTML = "Converting JSON to HTML <br><br>"+"Review:" + parsedData.result;
+    if(parsedData.result=="pos")
+      json_to_html.innerHTML = "The sentiment of the review was positive";
+    else if (parsedData.result=="neg") {
+      json_to_html.innerHTML = "The sentiment of the review was negative";
+    }(parsedData.result=="pos")
 
   } catch (error) {
     //If an error occurs display it in the console (for debugging)
+    var data = JSON.stringify(error);
+    var parsedData = JSON.parse(data);
+    document.getElementById("output2").innerHTML = "Converting JSON to HTML <br><br>"+
+    "Sentiment" + parsedData.sent;
     console.error(error);
+    document.getElementById("output2").innerHTML = error;
   }
 });
 

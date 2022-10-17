@@ -1,3 +1,18 @@
 h1{
 	font-weight: normal;
 }
+
+.main{
+	background-color: #D5ECEC;
+font-family: 'Open Sans', sans-serif;
+display: flex;
+width: 100%;
+margin: 0;
+font-size: 1vh;
+overflow-y: auto;
+overflow-x: hidden;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+border: 3px solid gold;
+}
