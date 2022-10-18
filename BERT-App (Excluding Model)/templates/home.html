@@ -73,6 +73,26 @@ html {
   align-items: center;
 }
 
+.flex-container2 {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  width: 100%;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+}
+
+.flex-container3 {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  width: auto;
+  flex-direction: column;
+  justify-content: left;
+  align-items: center;
+}
+
 .box-shadow {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
@@ -85,11 +105,13 @@ html {
       <h1>BERT API</h1>
         <div class="main">
           <p> How was the movie for you?</p>
-          <form action="http://localhost:5000/get_sentiment" method="post" id="default" target="_blank" >
-            <p>Review: <input type="text" name="Review" id="Review" for="Review"></p>
+          <form action="http://localhost:5000/get_sentiment" method="post" id="default" target="_blank" class = "flex-container3">
 
-            <button formaction="http://localhost:5000/get_sentiment" type="submit">Submit Review</button>
-            <button class="" type="reset" name="button">Reset</button><br>
+              <p>Review: <input type="text" name="Review" id="Review" for="Review"></p>
+              <div class = "flex-container2">
+              <button formaction="http://localhost:5000/get_sentiment" type="submit">Submit Review</button>
+              <button class="" type="reset" name="button">Reset</button><br>
+            </div>
             <!-- Upload resume: <input type="file" name="" value="" accept="pdf"> -->
           </form>
           <p name="output" id="output"></p>
